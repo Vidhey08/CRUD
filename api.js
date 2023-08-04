@@ -1,25 +1,10 @@
-// components/UserList.js
-import React, { useEffect, useState } from 'react';
-import { getUsers } from '../services/api';
+// services/api.js
+import axios from 'axios';
 
-const UserList = () => {
-  const [users, setUsers] = useState([]);
+const apiUrl = '/api'; // Use a relative URL for your backend API
 
-  useEffect(() => {
-    getUsers()
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching users:', error);
-      });
-  }, []);
-
-  return (
-    <div>
-      {/* Display the list of users */}
-    </div>
-  );
+export const getUsers = () => {
+  return axios.get(`${apiUrl}/users`);
 };
 
-export default UserList;
+// Add more API functions as needed
